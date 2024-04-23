@@ -55,8 +55,16 @@ const onSubmitForm = async (e) => {
     <Fragment>
       <div className='hero container'>
           <NavBar />
-          <h1>Register</h1>
-          <form onSubmit={onSubmitForm}>
+          <form onSubmit={onSubmitForm} className='lg-form'>
+          <h2>Register</h2>
+          <input 
+              type='text' 
+              name='name' 
+              placeholder='Enter your name' 
+              value={name}
+              onChange= {e => onChange(e)}
+            />
+            
             <input 
               type='email' 
               name='email' 
@@ -72,16 +80,11 @@ const onSubmitForm = async (e) => {
               value={password}
               onChange= {e => onChange(e)}
             />
-            <input 
-              type='text' 
-              name='name' 
-              placeholder='Enter your name' 
-              value={name}
-              onChange= {e => onChange(e)}
-            />
-            <button className='btn'>Sign Up</button>
+
+            <button className='btn' type='submit'>Sign Up</button>
+            <p>Account already exists? <Link to = "/login"><u>Login</u></Link></p>
           </form>
-          <Link to = "/login">Login</Link>
+          
       </div>
     </Fragment>
   );

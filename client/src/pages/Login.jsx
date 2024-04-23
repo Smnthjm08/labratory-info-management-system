@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Navbar from '../components/Navbar/NavBar';
 import {Link}  from "react-router-dom";
 import { toast } from 'react-toastify';
+import "/src/index.css"
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -52,13 +53,15 @@ const Login = ({ setAuth }) => {
     <Fragment>
       <div className='hero container'>
         <Navbar />
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={onSubmitForm} className='lg-form'>
+        <h2 className='login'>Login</h2>
           <input 
           type='email' 
           name='email' 
           placeholder='email'
           value = {email}
           onChange={e => onChange(e)}
+          autoComplete='email'
         />
           <input 
           type='password' 
@@ -66,10 +69,12 @@ const Login = ({ setAuth }) => {
           placeholder='password'
           value = {password}
           onChange={e => onChange(e)}
+          autoComplete='current-password'
           />
-          <button>Submit</button>
+          <button className='btn' type='submit'>Submit</button>
+          <p>New Here?<Link to="/register" ><u>Register</u></Link></p>
         </form>
-        <Link to="/register" >Register</Link>
+        
       </div>
     </Fragment>
   );

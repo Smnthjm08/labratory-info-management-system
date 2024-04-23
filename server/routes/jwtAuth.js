@@ -3,7 +3,7 @@ const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validInfo");
-const authorization = require("../middleware/authorization")
+const authorization = require("../middleware/authorization");
 
 //register route
 router.post("/register", validInfo, async (req, res) =>{
@@ -31,6 +31,7 @@ router.post("/register", validInfo, async (req, res) =>{
         const token = jwtGenerator(newUser.rows[0].user_id);
         return res.json({ token });
         
+        
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -49,7 +50,7 @@ router.post("/login", validInfo, async (req, res) =>{
             return res.status(401).json("Password or E-mail is incorrect");
         }
 
-        // 3. check if incomming password same as db password
+        // 3. check if incoming password same as db password
         const validPassword = await bcrypt.
         compare(
             password, 
@@ -69,14 +70,20 @@ router.post("/login", validInfo, async (req, res) =>{
     }
 });
 
-router.post("/is-verify", authorization, (req, res) =>{
+router.post("/is-verify", authorization, (req, res) => {
     try {
-        res.json(true);
+        // Assuming authorization middleware sets req.user if authentication is successful
+        if (req.user) {
+            res.json({ verified: true });
+        } else {
+            res.json({ verified: false });
+        }
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server Error");
+        res.status(500).json({ error: "Internal Server Error" });
     }
-})
+});
+
 
 
 module.exports = router;
