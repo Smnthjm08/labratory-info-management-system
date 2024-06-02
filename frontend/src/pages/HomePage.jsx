@@ -8,7 +8,6 @@ import Footer from '../components/Home/Footer'
 
 const HomePage = () => {
     return (
-
         <div className='bg-black'>
             <NavBar />
             <Hero />
