@@ -1,12 +1,41 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 
-export default function React() {
+export default function Login() {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+    const [message, setMessage] = useState('');
+    const [token, setToken] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8800/api/auth/login', formData, {
+                withCredentials: true // Include credentials (cookies) in the request
+            });
+            setToken(response.data.token);
+            setMessage('Login successful');
+            // Optionally, you can save the token to local storage for future use
+            localStorage.setItem('token', response.data.token);
+        } catch (error) {
+            setMessage(error.response?.data?.message || 'Failed to login');
+        }
+    };
+
     return (
-        <div >
+        <div>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
+
                         className="mx-auto h-10 w-auto"
-                        src="../../public/logo-long.png"
+                        src="/logo.png"
                         alt="Your Company"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -15,7 +44,7 @@ export default function React() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address
@@ -27,6 +56,8 @@ export default function React() {
                                     type="email"
                                     autoComplete="email"
                                     required
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -50,6 +81,8 @@ export default function React() {
                                     type="password"
                                     autoComplete="current-password"
                                     required
+                                    value={formData.password}
+                                    onChange={handleChange}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -65,14 +98,9 @@ export default function React() {
                         </div>
                     </form>
 
-                    <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member?{' '}
-                        <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                            Contact Admin
-                        </a>
-                    </p>
+                    {message && <p className="mt-2 text-center text-sm text-gray-500">{message}</p>}
                 </div>
             </div>
         </div>
-    )
+    );
 }

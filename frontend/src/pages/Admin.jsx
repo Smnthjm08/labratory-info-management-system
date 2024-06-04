@@ -1,14 +1,12 @@
 import React from 'react'
-import SideBar from '../global/SideBar'
-import AdminDash from '../components/Admin/AdminDash'
+import CustomSideBar from '../components/global/SideBar'
+
 
 
 const Admin = () => {
     return (
         <div>
-            <SideBar />
-            <AdminDash />
-
+            <CustomSideBar />
         </div>
     )
 }
