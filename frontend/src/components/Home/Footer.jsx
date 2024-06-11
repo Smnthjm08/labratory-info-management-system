@@ -14,9 +14,9 @@ const Footer = () => {
       <div>
         <h1 className="w-full text-3xl font-bold text-[#00df9a]">CRYPTO</h1>
         <p className="py-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit
-          ullam iste repellat consequatur libero reiciendis, blanditiis
-          accusantium.
+          Feel free to reach out through contact form or find our contact information below.
+          Your feedback, questions,and suggestions are important to us as we strive to provide
+          exceptional service to our university community.
         </p>
         <div className="flex justify-between md:w-[75%] my-6">
           <FaFacebookSquare size={30} />

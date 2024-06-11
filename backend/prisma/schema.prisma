@@ -43,16 +43,16 @@ model Role {
 }
 
 enum Gender {
-  Male
-  Female
-  PreferNotToSay
+  MALE
+  FEMALE
+  PREFERNOTTOSAY
 }
 
 enum RoleName {
-  Admin
-  Pathologist
-  Technician
-  Guest
+  ADMIN
+  PATHOLOGIST
+  TECHNICIAN
+  GUEST
 }
 
 model DigitalSign {
@@ -63,4 +63,42 @@ model DigitalSign {
   lastName  String
   updatedAt DateTime @default(now())
   signUrl   String
+}
+
+model Patient {
+  id                  Int                 @id @default(autoincrement())
+  firstName           String
+  lastName            String
+  email               String              @unique
+  phoneNumber         String
+  dob                 String?
+  age                 Int
+  gender              Gender
+  bloodGroup          BloodGroup
+  emergencyContact    String?
+  relationWithPatient RelationWithPatient
+  address             String
+  city                String
+  state               String
+  pin                 String
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+}
+
+enum BloodGroup {
+  A_POS
+  B_POS
+  AB_POS
+  O_POS
+  A_NEG
+  B_NEG
+  AB_NEG
+  O_NEG
+}
+
+enum RelationWithPatient {
+  PARENT
+  SPOUSE
+  GUARDIAN
+  OTHER
 }

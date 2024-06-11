@@ -15,9 +15,9 @@ const Cards = () => {
             alt="/"
           />
           <h2 className="text-2xl font-bold text-center py-8">Single User</h2>
-          <p className="text-center text-4xl font-bold">$149</p>
+          <p className="text-center text-4xl font-bold">$30</p>
           <div className="text-center font-medium">
-            <p className="py-2 border-b mx-8 mt-8">500 GB Storage</p>
+            <p className="py-2 border-b mx-8 mt-8">50 GB Storage</p>
             <p className="py-2 border-b mx-8">1 Granted User</p>
             <p className="py-2 border-b mx-8">Send up to 2 GB</p>
           </div>
@@ -31,12 +31,12 @@ const Cards = () => {
             src={Double}
             alt="/"
           />
-          <h2 className="text-2xl font-bold text-center py-8">Single User</h2>
-          <p className="text-center text-4xl font-bold">$149</p>
+          <h2 className="text-2xl font-bold text-center py-8">Single Lab</h2>
+          <p className="text-center text-4xl font-bold">$150</p>
           <div className="text-center font-medium">
             <p className="py-2 border-b mx-8 mt-8">500 GB Storage</p>
-            <p className="py-2 border-b mx-8">1 Granted User</p>
-            <p className="py-2 border-b mx-8">Send up to 2 GB</p>
+            <p className="py-2 border-b mx-8">Upto 10 Granted User</p>
+            <p className="py-2 border-b mx-8">Send up to 20 GB</p>
           </div>
           <button className="bg-black text-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3">
             Start Trial
@@ -48,12 +48,12 @@ const Cards = () => {
             src={Triple}
             alt="/"
           />
-          <h2 className="text-2xl font-bold text-center py-8">Single User</h2>
-          <p className="text-center text-4xl font-bold">$149</p>
+          <h2 className="text-2xl font-bold text-center py-8">Multiple Labs</h2>
+          <p className="text-center text-4xl font-bold">$699</p>
           <div className="text-center font-medium">
-            <p className="py-2 border-b mx-8 mt-8">500 GB Storage</p>
-            <p className="py-2 border-b mx-8">1 Granted User</p>
-            <p className="py-2 border-b mx-8">Send up to 2 GB</p>
+            <p className="py-2 border-b mx-8 mt-8">1 TB Storage</p>
+            <p className="py-2 border-b mx-8">100 Granted User</p>
+            <p className="py-2 border-b mx-8">Send up to 128 GB</p>
           </div>
           <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3">
             Start Trial

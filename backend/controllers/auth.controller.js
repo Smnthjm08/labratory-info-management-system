@@ -43,7 +43,7 @@ export const register = [
           firstName,
           lastName,
           phone: phone.toString(),
-          gender,
+          gender: gender.toUpperCase(),
           roleId,
           address,
           city,

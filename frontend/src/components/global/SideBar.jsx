@@ -223,7 +223,7 @@ const CustomSidebar = () => {
 
                             <Item
                                 title="FAQ Page"
-                                to="/faq"
+                                to="/admin/faq"
                                 icon={<HelpOutlineOutlinedIcon />}
                                 selected={selected}
                                 setSelected={setSelected}
