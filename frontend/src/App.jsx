@@ -10,6 +10,8 @@ import ManageTeam from "./components/Admin/ManageTeam";
 import DigitalSignature from "./components/Admin/DigitalSignature";
 import AddSignature from "./components/Admin/AddSignature";
 import Faq from "./components/Faq";
+import Appointments from "./components/patients/Appointments";
+import Visits from "./components/patients/Visits";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/admin/" element={<AdminLayout />}>
           {/* <Route index element={<Admin />} /> */}
           <Route path="new-patient" element={<NewPatient />} />
+          <Route path="appointments" element={<Appointments />} />
+          <Route path="visits" element={<Visits />} />
           <Route path="new-user" element={<NewUser />} />
           <Route path="manage-team" element={<ManageTeam />} />
           <Route path="digital-sign" element={<DigitalSignature />} />

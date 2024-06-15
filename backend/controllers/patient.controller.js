@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import prisma from "../lib/prisma.js";
 import { PatientSchema } from "../lib/schema.js";
 
@@ -41,13 +39,6 @@ export const registerPatient = async (req, res) => {
         pin: validatedData.pin,
       },
     });
-
-    // Generate JWT token (optional)
-    // const token = jwt.sign({ id: newPatient.id }, process.env.JWT_SECRET_KEY, {
-    //   expiresIn: "1h",
-    // });
-
-    // Return success response
     res
       .status(201)
       .json({ message: "Patient registered successfully", newPatient });
@@ -63,5 +54,17 @@ export const registerPatient = async (req, res) => {
     // Handle other errors
     console.error(error);
     res.status(500).json({ message: "Failed to register patient" });
+  }
+};
+
+export const getPatients = async (req, res) => {
+  try {
+    const patients = await prisma.patient.findMany();
+    res.status(200).json(patients);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to get Users!",
+    });
   }
 };
